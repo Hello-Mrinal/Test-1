@@ -15,7 +15,8 @@
             <div class="box " id="box1">
                 <div class="box-inner-info">
                     <div class="con">
-                        <input type="radio" name="product-option" value="1pair">                        <div>
+                        <input type="radio" name="product-option" value="1pair">                        
+                        <div>
                             <h3>1 Pair</h3>
                             <h3>DKK 195.00</h3>
                         </div>
@@ -47,7 +48,8 @@
             <div class="box" id="box2">
                 <div class="box-inner-info">
                     <div class="con">
-                        <input type="radio" name="product-option" value="2pair">                        <div>
+                        <input type="radio" name="product-option" value="2pair">                        
+                        <div>
                             <h3>1 Pair</h3>
                             <h3>DKK 195.00</h3>
                         </div>
@@ -79,7 +81,8 @@
             <div class="box" id="box3">
                 <div class="box-inner-info">
                     <div class="con">
-                        <input type="radio" name="product-option" value="3pair">                        <div>
+                        <input type="radio" name="product-option" value="3pair">                        
+                        <div>
                             <h3>1 Pair</h3>
                             <h3>DKK 195.00</h3>
                         </div>
@@ -120,14 +123,26 @@
 
     <script>
         document.querySelectorAll('input[name="product-option"]').forEach((input) => {
-            input.addEventListener('change', function () {
-                document.querySelectorAll('.box').forEach(div => div.classList.remove('expanded'));
-                const outerDiv = this.closest('.box');
-                if (outerDiv) {
-                    outerDiv.classList.add('expanded');
-                }
+                input.addEventListener('change', function () {
+                    document.querySelectorAll('.box').forEach(div => div.classList.remove('expanded'));
+                    const outerDiv = this.closest('.box');
+                    if (outerDiv) {
+                        outerDiv.classList.add('expanded');
+                    }
+                });
             });
-        });
+
+            document.querySelectorAll('.box').forEach(optionDiv => {
+                optionDiv.addEventListener('click', function () {
+
+                    const radio = this.querySelector('input[type="radio"]');
+                    if (radio) radio.checked = true;
+
+                    document.querySelectorAll('.box').forEach(div => div.classList.remove('expanded'));
+
+                    this.classList.add('expanded');
+                });
+            });
         </script>
 </body>
 </html>
